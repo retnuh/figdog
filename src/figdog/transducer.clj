@@ -63,7 +63,7 @@
                                c (.charAt word index)
                                post (.substring word (inc index))]
                            ;(println "whee" word index pre post c)
-                           (eduction (comp
+                           (sequence (comp
                                        ;(map #(do (println "wai1" word index pre c post (char %)) %))
                                        (filter #(not (== % (int c))))
                                        (map #(str pre (char %) post))
@@ -81,7 +81,7 @@
                 seen-transducer
                 )]
     ;(println (range (count word)) xform)
-    (eduction xform (range (count word))) #_result))
+    (sequence xform (range (count word))) #_result))
 
 (defn words-seq
   ([word]
