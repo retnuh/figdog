@@ -42,7 +42,9 @@
           ;; (println res)
           (cond
             (nil? word) res
-            (= word end-word) (do (print-path word path) res)
+            (= word end-word) (do
+                                ;(print-path word path)
+                                res)
             :else (let [new-words (remove seen (make-fn all-words word))
                         new-todo (for [w new-words] [w new-path])
                         t (into (pop todo) new-todo)]
