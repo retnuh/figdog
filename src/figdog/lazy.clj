@@ -1,7 +1,7 @@
 (ns figdog.lazy
   (:use [clojure.set] [criterium.core] [figdog.core]))
 
-(defn make-words [same-size-words word]
+(defn make-words [actual-words word]
   (let [possibles (for [index (range (count word))
                         :let [pre (.substring word 0 index)
                               c (.charAt word index)
@@ -9,7 +9,7 @@
                         other (range (int \a) (inc (int \z))) :when (not (== other (int c)))]
                     (str pre (char other) post))]
     ;; (println possibles)
-    (filter same-size-words possibles)))
+    (filter actual-words possibles)))
 
 (defn words-seq
   ([word]

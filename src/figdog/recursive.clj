@@ -3,9 +3,9 @@
             [figdog.transducer :as transducer])
   (:use [clojure.set] [criterium.core] [figdog.core]))
 
-(defn find-path-recur
+(defn find-path-difference
   ([start-word end-word]
-    (find-path-recur start-word end-word lazy/make-words))
+    (find-path-difference start-word end-word lazy/make-words))
   ([start-word end-word make-fn]
     (let [all-words (load-words (count start-word))
           all-words-count (count all-words)]
