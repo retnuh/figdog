@@ -21,9 +21,16 @@
   (quick-bench (trans/find-path "pearl" "water" trans/words-seq-first))
   (println "trans" (time (trans/find-path "pearl" "water" trans/words-seq)))
   (quick-bench (trans/find-path "pearl" "water" trans/words-seq))
+  )
 
-  ; recursive driver
+(do
+  (bench (lazy/find-path "pearl" "water"))
+  (bench (trans/find-path "pearl" "water" trans/words-seq-first))
+  (bench (trans/find-path "pearl" "water" trans/words-seq))
+  )
 
+; recursive driver
+#_(do
   (println "recursive, lazy" (time (recursive/find-path "fig" "dog" lazy/make-words)))
   (quick-bench (recursive/find-path "fig" "dog" lazy/make-words))
   (println "recursive, trans first" (time (recursive/find-path "fig" "dog" trans/make-words-first)))

@@ -24,10 +24,8 @@
 
 (defn find-path [start-word end-word]
   ;(println "lazy find path" start-word end-word)
-  (first (drop-while #(not= end-word (first (% 0)))
-                     (map vector
-                          (words-seq start-word)
-                          (iterate inc 0)))))
+  (first (drop-while #(not= end-word (first (% 1)))
+                     (map-indexed vector (words-seq start-word)))))
 
 
 (println (find-path "fig" "dog"))
